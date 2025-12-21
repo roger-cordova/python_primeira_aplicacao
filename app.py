@@ -33,14 +33,14 @@ def escolher_opcoes():
         opcao_invalida()
 
 def cadastrar_local():
-    menu_principal = 2
-    while (menu_principal == 2):
+    menu_principal = 1
+    while (menu_principal == 1):
         os.system('cls')
         print('Cadastro de novos locais\n')
         nome_do_local = input('Informe o nome do estabelecimento: ')
         locais.append(nome_do_local)
         print(f'\nO Estabelecimento {nome_do_local} foi cadastrado com sucesso\n')        
-        menu_principal = int(input('Pressione 2 para cadastrar um novo locao ou pressione outra tecla para sair: '))
+        menu_principal = int(input('Pressione 1 para cadastrar um novo locao ou pressione outra tecla para sair: '))
     else:    
         main()
 
