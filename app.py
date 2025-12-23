@@ -35,8 +35,7 @@ def escolher_opcoes():
 def cadastrar_local():
     menu_principal = 1
     while (menu_principal == 1):
-        os.system('cls')
-        print('Cadastro de novos locais\n')
+        exibir_subtitulos('Cadastro de novos locais')
 
         nome_do_local = input(f'Informe o nome do estabelecimento: ')
 
@@ -53,20 +52,30 @@ def cadastrar_local():
         main()
 
 def listar_local():
-    os.system('cls')
-    print('Listando os locais cadastrados\n')
+    exibir_subtitulos('Listando os locais cadastrados')
+    espacamento = 0
+    print(f'Espaçamento: {espacamento}\n')
+    for tamanho_local in locais:
+        if (len(tamanho_local['nome']) > espacamento):
+            print(f'Espaçamento: {espacamento} -- {tamanho_local['nome']} -- len(tamanho_local[nome]): {len(tamanho_local['nome'])}\n')
+            espacamento = len(tamanho_local['nome'])
+        elif (len(tamanho_local['categoria']) > espacamento):
+             print(f'Espaçamento: {espacamento} -- {tamanho_local['categoria']} -- len(tamanho_local[categoria]): {len(tamanho_local['categoria'])}\n')
+             espacamento = len(tamanho_local['categoria'])       
+        
+
+    print(f'{'Nome do Local'.ljust(espacamento)} | {'Categoria'.ljust(espacamento)} | Status')
     for local in locais:
         nome_do_local = local['nome']
         categoria_do_local = local['categoria']
         status_do_local = 'ativado' if local['status'] else 'desativado'
-        print(f'{nome_do_local}|{categoria_do_local}|{status_do_local}')
+        print(f'{nome_do_local.ljust(espacamento)} | {categoria_do_local.ljust(espacamento)} | {status_do_local}')
 
     input('\nPressione uma tecla para voltar ao menu principal: ')
     main()
 
-def troca_status_local():
-    os.system('cls')
-    print('Troca Status Local')
+def troca_status_local():    
+    exibir_subtitulos('Troca Status Local')
 
     nome_local = input('Informe o nome do local que deseja trocar o status: ')
     local_encontrado = False
@@ -85,6 +94,15 @@ def troca_status_local():
 
 def encerar_app():
     os.system('cls')
+
+def exibir_subtitulos(texto):    
+    os.system('cls')
+    linha = '*' * (len(texto))
+    print(linha)
+    print(texto)
+    print(linha)
+
+    print()
 
 def opcao_invalida():
     print('Opção Inválida, por favor infore um valor de 1 a 4\n')
