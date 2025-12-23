@@ -12,12 +12,14 @@ def exibir_nome_do_programa():
       
       ''')
 def exibir_opcoes():    
+    '''Essa função é responsável por exibir as opções'''
     print('1 - Cadastrar Restuarante')
     print('2 - Listar Restaurantes')
     print('3 - Ativar Restaurante')
     print('4 - Sair')
 
 def escolher_opcoes():
+    '''Essa função é responsável por capturar e validar a opção escolhida'''
     try:
         opcao_escolhida = int(input('Escolha uma opção: '))
         if opcao_escolhida == 1:
@@ -33,6 +35,8 @@ def escolher_opcoes():
         opcao_invalida()
 
 def cadastrar_local():
+    '''Essa função é responsável por cadastrar os locais'''
+
     menu_principal = 1
     while (menu_principal == 1):
         exibir_subtitulos('Cadastro de novos locais')
@@ -52,15 +56,15 @@ def cadastrar_local():
         main()
 
 def listar_local():
+    '''Essa função é responsável por listar os locais'''
+
     exibir_subtitulos('Listando os locais cadastrados')
     espacamento = 0
-    print(f'Espaçamento: {espacamento}\n')
+    
     for tamanho_local in locais:
-        if (len(tamanho_local['nome']) > espacamento):
-            print(f'Espaçamento: {espacamento} -- {tamanho_local['nome']} -- len(tamanho_local[nome]): {len(tamanho_local['nome'])}\n')
+        if (len(tamanho_local['nome']) > espacamento):          
             espacamento = len(tamanho_local['nome'])
-        elif (len(tamanho_local['categoria']) > espacamento):
-             print(f'Espaçamento: {espacamento} -- {tamanho_local['categoria']} -- len(tamanho_local[categoria]): {len(tamanho_local['categoria'])}\n')
+        elif (len(tamanho_local['categoria']) > espacamento):          
              espacamento = len(tamanho_local['categoria'])       
         
 
@@ -74,7 +78,9 @@ def listar_local():
     input('\nPressione uma tecla para voltar ao menu principal: ')
     main()
 
-def troca_status_local():    
+def troca_status_local(): 
+    '''Essa função é responsável por trcar o status dos locais'''   
+
     exibir_subtitulos('Troca Status Local')
 
     nome_local = input('Informe o nome do local que deseja trocar o status: ')
@@ -93,9 +99,11 @@ def troca_status_local():
     main()            
 
 def encerar_app():
+    '''Essa função é responsável por encerrar o app'''
     os.system('cls')
 
-def exibir_subtitulos(texto):    
+def exibir_subtitulos(texto):   
+    '''Essa função é responsável por exibir os subtítulos''' 
     os.system('cls')
     linha = '*' * (len(texto))
     print(linha)
@@ -105,12 +113,14 @@ def exibir_subtitulos(texto):
     print()
 
 def opcao_invalida():
+    '''Essa função é responsável por exibir as mensagens de opção invalida'''
     print('Opção Inválida, por favor infore um valor de 1 a 4\n')
     input('Pressione uma tecla para voltar ao menu principal: ')
     main()
     
 
 def main():
+    '''Essa função é responsável por iniciar e reinicar o app'''
     os.system('cls')
     exibir_nome_do_programa()
     exibir_opcoes()
